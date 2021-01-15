@@ -1,0 +1,45 @@
+<div *ngIf="characters !== undefined">
+    <div *ngFor="let character of characters.results" class="card mb-3">
+        <div class="row g-0">
+            <div class="col-md-1">
+                <img [src]="character.image" alt="" class="card-img-top">
+            </div>
+            <div class="col-md-3">
+                <div class="card-body">
+                    <a [routerLink]="['/detail', character.id]">
+                        <h5 class="card-title">{{character.name}}</h5>
+                    </a>
+                    <p class="card-text"><small class="text-muted">{{character.status}} - {{character.species}}</small></p>
+                    <p class="card-text"><small class="text-muted">Last known location:</small></p>
+                    <p class="card-text">{{character.location.name}}</p>
+                </div>
+                <div class="custom-control custom-switch">
+                    <button type="button" class="btn btn-outline-success" onclick="addFavorite(character.id)">Add to Favorites</button>
+                    <button type="button" class="btn btn-outline-danger" onclick="removeFavorite(character.id)">Remove from Favorites</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Pagination -->
+<div class="row text-center down">
+    <div class="col-12">
+        {{initialRange()}} - {{finalRange()}} of {{count}}
+    </div>
+    <div class="col-12">
+        <button (click)="getCharacters(1)" [disabled]="isFirst()">
+          <i class="fas fa-angle-double-left"></i>
+      </button>
+        <button (click)="getCharacters(currentPage - 1)" [disabled]="isFirst()">
+          <i class="fas fa-angle-left"></i>
+      </button>
+        <button (click)="getCharacters(currentPage + 1)" [disabled]="isLast()">
+          <i class="fas fa-angle-right"></i>
+      </button>
+        <button (click)="getCharacters(pages)" [disabled]="isLast()">
+          <i class="fas fa-angle-double-right"></i>
+      </button>
+    </div>
+</div>

@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "rickmorty"
+    }
+  },
+  "defaultProject": "rickmorty",
+  "cli": {
+    "analytics": "a6b66e97-f9db-4e2a-8aae-630ec7f21513"
+  }
 }
